@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature Converter</title>
+
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <script language="JavaScript" src="../js/c2f.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<h1>Conversion Table</h1>
+
+
+<p>Enter a range of values to convert</p>
+
+
+<input id = "lower">
+<input id = "higher">
+
+<button type="button" onclick="validate()">Submit</button>
+
+<p id="result"></p>
+
+
+
+<div id="convert">
+
+
+
+</div>
+
+<script>
+
+    function validate() {
+
+        var low;
+        var high;
+        var result;
+
+
+        low = document.getElementById("lower").value;
+        high = document.getElementById("higher").value;
+
+        if (low.length===0 && high.length!==0){
+            result="low length=0";
+            document.getElementById("result").innerText=result;
+
+        } else if (low.length===0 && high.length===0){
+
+
+            result="no values entered please enter a range of values";
+            document.getElementById("result").innerText=result;
+
+
+        } else if (high.length===0){
+
+            low = parseInt(low);
+            high = parseInt(low)+10;
+
+            result="function call for 10 values from low";
+
+            document.getElementById("result").innerText=high;
+            convert("convert",low,high);
+        } else {
+            result = "no control";
+            document.getElementById("result").innerText=low;
+
+        }
+
+
+
+
+
+    }
+
+</script>
+
+</body>
+</html>

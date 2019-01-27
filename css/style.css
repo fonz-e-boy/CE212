@@ -1,0 +1,29 @@
+h1 {text-align: center;
+    color: rebeccapurple;}
+
+body {margin: 4em;
+    width: 400px;}
+
+pre {margin: 2em; background: #EEFFFF}
+
+td {text-align: center;}
+
+.callout { width: 200px; border: 2px solid navy; background: #EEFFFF; float: right;}
+
+tr.even{
+    background: #b3d4fc;
+
+
+}
+
+
+tr.odd{
+    background: #fca3d0;
+    color: aqua;
+}
+
+tr.even td{
+    color: yellow;
+
+}
+
