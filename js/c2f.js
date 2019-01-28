@@ -1,4 +1,4 @@
-function convert(tagID, from, to){
+function convert(tagID, from, to, selection){
 
 
 
@@ -17,33 +17,71 @@ function convert(tagID, from, to){
     celcius.appendChild(document.createTextNode("Celcius"));
 
 
-    table.appendChild(celcius);
-    table.appendChild(farenheit);
+    if (selection===1) {
 
 
+        table.appendChild(celcius);
+        table.appendChild(farenheit);
+        for (var i = from; i < to; i++) {
+
+            var tr = document.createElement("tr");
+            var td = document.createElement("td");
+            var td2 = document.createElement("td");
+
+            if (i % 2 == 1) {
+                tr.setAttribute("class", "odd")
+            } else {
+                tr.setAttribute("class", "even")
+            }
 
 
-    for (var i = from; i <to ; i++) {
+            td.appendChild(document.createTextNode(i));
+            td2.appendChild(document.createTextNode(c2f(i)));
+            tr.appendChild(td);
+            tr.appendChild(td2);
 
-        var tr = document.createElement("tr");
-        var td = document.createElement("td");
-        var td2 = document.createElement("td");
+            table.appendChild(tr);
 
-        if (i%2==1){
-            tr.setAttribute("class", "odd")
-        } else {
-            tr.setAttribute("class","even")
+        }
+    } else {
+
+
+        table.appendChild(farenheit);
+        table.appendChild(celcius);
+
+        for (var i = from; i < to; i++) {
+
+            var tr = document.createElement("tr");
+            var td = document.createElement("td");
+            var td2 = document.createElement("td");
+
+            if (i % 2 == 1) {
+                tr.setAttribute("class", "odd")
+            } else {
+                tr.setAttribute("class", "even")
+            }
+
+
+            td.appendChild(document.createTextNode(i));
+            td2.appendChild(document.createTextNode(f2c(i)));
+            tr.appendChild(td);
+            tr.appendChild(td2);
+
+            table.appendChild(tr);
+
         }
 
 
-        td.appendChild(document.createTextNode(i));
-        td2.appendChild(document.createTextNode(c2f(i)));
-        tr.appendChild(td);
-        tr.appendChild(td2);
 
-        table.appendChild(tr);
+
+
 
     }
+
+
+
+
+
 
     document.body.appendChild(table);
 
@@ -57,7 +95,8 @@ function convert(tagID, from, to){
 
     function f2c(f) {
 
-        return (f-32) * (5/9)
+        var x = (f -32) * (5/9)
+        return x.toFixed(1)
     }
 
 

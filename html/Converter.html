@@ -19,6 +19,11 @@
 <input id = "lower">
 <input id = "higher">
 
+<br>
+
+<input type="radio" id="CF" name="choice"  checked>C to F
+<input type="radio" id="FC" name="choice" > F to C
+
 <button type="button" onclick="validate()">Submit</button>
 
 <p id="result"></p>
@@ -38,20 +43,31 @@
         var low;
         var high;
         var result;
+        var selection;
 
 
         low = document.getElementById("lower").value;
         high = document.getElementById("higher").value;
 
+
+        if (document.getElementById("CF").checked){
+            selection = 1;
+        } else {
+            selection = 2;
+        }
+
+
         if (low.length===0 && high.length!==0){
             result="low length=0";
             document.getElementById("result").innerText=result;
+            convert("convert",low,high,selection);
 
         } else if (low.length===0 && high.length===0){
 
 
             result="no values entered please enter a range of values";
             document.getElementById("result").innerText=result;
+            convert("convert",low,high,selection);
 
 
         } else if (high.length===0){
@@ -62,10 +78,11 @@
             result="function call for 10 values from low";
 
             document.getElementById("result").innerText=high;
-            convert("convert",low,high);
+            convert("convert",low,high,selection);
         } else {
             result = "no control";
             document.getElementById("result").innerText=low;
+            convert("convert",low,high,selection);
 
         }
 
