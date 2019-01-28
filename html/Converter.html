@@ -50,40 +50,50 @@
         high = document.getElementById("higher").value;
 
 
-        if (document.getElementById("CF").checked){
-            selection = 1;
-        } else {
-            selection = 2;
-        }
 
+        if (isNaN(low) || isNaN(high)){
 
-        if (low.length===0 && high.length!==0){
-            result="low length=0";
+            result="Please enter valid integers only";
+
             document.getElementById("result").innerText=result;
-            convert("convert",low,high,selection);
-
-        } else if (low.length===0 && high.length===0){
-
-
-            result="no values entered please enter a range of values";
-            document.getElementById("result").innerText=result;
-            convert("convert",low,high,selection);
-
-
-        } else if (high.length===0){
-
-            low = parseInt(low);
-            high = parseInt(low)+10;
-
-            result="function call for 10 values from low";
-
-            document.getElementById("result").innerText=high;
-            convert("convert",low,high,selection);
         } else {
-            result = "no control";
-            document.getElementById("result").innerText=low;
-            convert("convert",low,high,selection);
 
+
+            if (document.getElementById("CF").checked) {
+                selection = 1;
+            } else {
+                selection = 2;
+            }
+
+
+            if (low.length === 0 && high.length !== 0) {
+                result = "low length=0";
+                document.getElementById("result").innerText = result;
+                convert("convert", low, high, selection);
+
+            } else if (low.length === 0 && high.length === 0) {
+
+
+                result = "no values entered please enter a range of values";
+                document.getElementById("result").innerText = result;
+                convert("convert", low, high, selection);
+
+
+            } else if (high.length === 0) {
+
+                low = parseInt(low);
+                high = parseInt(low) + 10;
+
+                result = "function call for 10 values from low";
+
+                document.getElementById("result").innerText = high;
+                convert("convert", low, high, selection);
+            } else {
+                result = "no control";
+                document.getElementById("result").innerText = low;
+                convert("convert", low, high, selection);
+
+            }
         }
 
 
@@ -95,4 +105,3 @@
 </script>
 
 </body>
-</html>
