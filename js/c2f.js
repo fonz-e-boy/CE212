@@ -19,55 +19,125 @@ function convert(tagID, from, to, selection){
 
     if (selection===1) {
 
+        if (from < to) {
 
-        table.appendChild(celcius);
-        table.appendChild(farenheit);
-        for (var i = from; i < to; i++) {
+            table.appendChild(celcius);
+            table.appendChild(farenheit);
+            for (var i = from; i < to; i++) {
 
-            var tr = document.createElement("tr");
-            var td = document.createElement("td");
-            var td2 = document.createElement("td");
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                var td2 = document.createElement("td");
 
-            if (i % 2 == 1) {
-                tr.setAttribute("class", "odd")
-            } else {
-                tr.setAttribute("class", "even")
+                if (i % 2 == 1) {
+                    tr.setAttribute("class", "odd")
+                } else {
+                    tr.setAttribute("class", "even")
+                }
+
+
+                td.appendChild(document.createTextNode(i));
+                td2.appendChild(document.createTextNode(c2f(i)));
+                tr.appendChild(td);
+                tr.appendChild(td2);
+
+                table.appendChild(tr);
+
+            }
+
+        } else {
+
+            table.appendChild(celcius);
+            table.appendChild(farenheit);
+            for (var i = from; i > to; i--) {
+
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                var td2 = document.createElement("td");
+
+                if (i % 2 == 1) {
+                    tr.setAttribute("class", "odd")
+                } else {
+                    tr.setAttribute("class", "even")
+                }
+
+
+                td.appendChild(document.createTextNode(i));
+                td2.appendChild(document.createTextNode(c2f(i)));
+                tr.appendChild(td);
+                tr.appendChild(td2);
+
+                table.appendChild(tr);
+
             }
 
 
-            td.appendChild(document.createTextNode(i));
-            td2.appendChild(document.createTextNode(c2f(i)));
-            tr.appendChild(td);
-            tr.appendChild(td2);
 
-            table.appendChild(tr);
+
 
         }
+
+
+
     } else {
 
 
-        table.appendChild(farenheit);
-        table.appendChild(celcius);
+        if (from < to) {
 
-        for (var i = from; i < to; i++) {
+            table.appendChild(farenheit);
+            table.appendChild(celcius);
 
-            var tr = document.createElement("tr");
-            var td = document.createElement("td");
-            var td2 = document.createElement("td");
+            for (var i = from; i < to; i++) {
 
-            if (i % 2 == 1) {
-                tr.setAttribute("class", "odd")
-            } else {
-                tr.setAttribute("class", "even")
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                var td2 = document.createElement("td");
+
+                if (i % 2 == 1) {
+                    tr.setAttribute("class", "odd")
+                } else {
+                    tr.setAttribute("class", "even")
+                }
+
+
+                td.appendChild(document.createTextNode(i));
+                td2.appendChild(document.createTextNode(f2c(i)));
+                tr.appendChild(td);
+                tr.appendChild(td2);
+
+                table.appendChild(tr);
+
+            }
+        } else {
+
+            table.appendChild(farenheit);
+            table.appendChild(celcius);
+
+            for (var i = from; i > to; i--) {
+
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                var td2 = document.createElement("td");
+
+                if (i % 2 == 1) {
+                    tr.setAttribute("class", "odd")
+                } else {
+                    tr.setAttribute("class", "even")
+                }
+
+
+                td.appendChild(document.createTextNode(i));
+                td2.appendChild(document.createTextNode(f2c(i)));
+                tr.appendChild(td);
+                tr.appendChild(td2);
+
+                table.appendChild(tr);
+
             }
 
 
-            td.appendChild(document.createTextNode(i));
-            td2.appendChild(document.createTextNode(f2c(i)));
-            tr.appendChild(td);
-            tr.appendChild(td2);
 
-            table.appendChild(tr);
+
 
         }
 
