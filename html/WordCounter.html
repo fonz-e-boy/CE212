@@ -114,7 +114,7 @@
         function split(AR) {
 
 
-            for (let i = 0; i < AR.length; i++) {
+            for (var i = 0; i < AR.length; i++) {
                 arr2.push(AR[i].toUpperCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,""));
             }
 
@@ -147,7 +147,7 @@
 
             counter = 0;
 
-            for (let i = 0; i <arr2.length ; i++) {
+            for (var i = 0; i <arr2.length ; i++) {
                 var row = document.createElement("tr");
                 var td1 = document.createElement("td");
                 var td2 = document.createElement("td");
@@ -194,20 +194,10 @@
 <a href="javascript:openFile(document.getElementById('url').value)">
     Open document</a>
 </br>
-<a href="javascript:upperCase(w.document.body)">To upper case</a>
-<br>
-<a href="javascript:lowerCase(w.document.body)">To lower case</a>
-
 
 </br>
 
-<a href="javascript:retrieveText()">Retrieve text</a><br/>
-
-<a href="javascript:displayArr()">Display array contents</a> <br>
-
-<a href="javascript:assoc3()">test array</a>
-
-
+<a href="javascript:retrieveText()">Count words</a><br/>
 
 
 <pre id="count"> &nbsp; </pre><br/>
