@@ -25,41 +25,124 @@
                 width: 2.2em;
                 font-weight: bold
             }
+
+            .active {
+
+                background-color: #2f2bff;
+            }
+
+
+
         </style>
+
+
+
+
 
 
         <script>
 
 
-            var defau =0;
+
+
+            var result;
+            var display;
+            var evalArray=[];
+            var waiting=false;
 
             function pressed(but) {
 
+                display = document.getElementById("calc").value;
 
-                var current = document.getElementById("calc").value;
 
-
-                if (current === "0" && but!=='.') {
+                if (!waiting) {
                     document.getElementById("calc").value = but;
+                    waiting = true;
                 } else {
-
-                    current+=but;
-                    document.getElementById("calc").value=current;
-
+                    display += but;
+                    document.getElementById("calc").value = display;
                 }
+
 
             }
 
+            function decimalPressed(){
+                var display = document.getElementById("calc").value;
 
-            function calculate() {
-
+                if (!display.includes(".")){
+                    display+='.';
+                    document.getElementById("calc").value=display;
+                }
 
             }
 
 
             function setDefault(){
                 document.getElementById("calc").value='0';
+                evalArray=[];
+
             }
+
+
+            function plusPressed(){
+
+                if (evalArray.length===2){
+                    calculate()
+                } else {
+
+                    display = document.getElementById("calc").value;
+
+                    evalArray.push(display);
+                    evalArray.push('+');
+                    waiting = false;
+                }
+
+
+
+            }
+
+            function minusPressed(){
+                display=document.getElementById("calc").value;
+
+                evalArray.push(display);
+                evalArray.push('-');
+                waiting=false;
+
+            }
+
+
+            function dividePressed(){
+                display=document.getElementById("calc").value;
+
+                evalArray.push(display);
+                evalArray.push('/');
+                waiting=false;
+
+            }
+
+
+            function multPressed(){
+                display=document.getElementById("calc").value;
+
+                evalArray.push(display);
+                evalArray.push('*');
+                waiting = false;
+            }
+
+
+
+            function calculate(){
+                display=document.getElementById("calc").value;
+                evalArray.push(display);
+                result= eval(evalArray.join(" "));
+                document.getElementById("calc").value=result;
+                waiting=false;
+                evalArray=[];
+
+
+            }
+
+
 
 
         </script>
@@ -104,7 +187,7 @@
         </tr>
         <tr>
             <td>
-                <button onclick="pressed('.')">.</button>
+                <button onclick="decimalPressed()">.</button>
             </td>
             <td>
                 <button onclick="pressed('0')">0</button>
@@ -115,20 +198,20 @@
         </tr>
         <tr>
             <td>
-                <button onclick="pressed('+')">+</button>
+                <button onclick="plusPressed()">+</button>
             </td>
             <td>
-                <button onclick="pressed('-')">-</button>
+                <button onclick="minusPressed()">-</button>
             </td>
             <td>
-                <button onclick="pressed('x')">*</button>
+                <button onclick="multPressed()">*</button>
             </td>
         </tr>
     </table>
     <table class="indent">
         <tr>
             <td>
-                <button>/</button>
+                <button onclick="dividePressed()">/</button>
             </td>
             <td>
                 <button onclick="calculate()">=</button>
