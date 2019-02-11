@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Count Words</title>
+
+    <link rel="stylesheet" href="../css/style2.css" type="text/css">
+
+    <script>
+
+
+        function openFile(url) {
+            w = window.open();
+            w.location = url;
+        }
+
+
+        function upperCase(node) {
+            if (node.nodeType==Node.ELEMENT_NODE) {
+                for (var m = node.firstChild; m!=null; m = m.nextSibling)
+                    upperCase(m);
+            }
+            else if (node.nodeType==Node.TEXT_NODE) {
+                node.data = node.data.toUpperCase();
+            }
+        }
+
+
+        function lowerCase(node){
+
+            if(node.nodeType==Node.ELEMENT_NODE){
+                for (var m = node.firstChild; m!=null; m=m.nextSibling) {
+                    lowerCase(m)
+
+                }
+            } else if(node.nodeType==Node.TEXT_NODE){
+                node.data=node.data.toLowerCase();
+            }
+        }
+
+        var counter;
+        var pre;
+
+
+        function retrieveText() {
+
+
+            retrieve(w.document.body);
+
+            display();
+        }
+
+        var array1=[];
+        var arr2 =[];
+
+        function retrieve(doc) {
+            if (doc.nodeType == Node.ELEMENT_NODE) {
+                for (var m = doc.firstChild; m != null; m = m.nextSibling) {
+                    retrieve(m);
+
+                }
+            } else if (doc.nodeType == Node.TEXT_NODE) {
+
+
+                // doc.data=doc.data.split(" ");
+                // var table = document.getElementById("tab1");
+                // var row = document.createElement("tr");
+                // var td1 = document.createElement("td");
+                // var td2 = document.createElement("td");
+                // td1.appendChild(document.createTextNode(doc.data.toUpperCase()));
+                // td2.appendChild(document.createTextNode("temp"));
+                // row.appendChild(td1);
+                // row.appendChild(td2);
+                // table.appendChild(row);
+                // counter++;
+                // document.body.appendChild(table);
+
+                var temparray=doc.data.split(" ");
+
+               array1=temparray.filter(function(str){
+
+                    return /\S/.test(str)
+                });
+
+               split(array1);
+
+
+
+
+                // var table = document.getElementById("tab1");
+                // var row = document.createElement("tr");
+                // var td1 = document.createElement("td");
+                // var td2 = document.createElement("td");
+                // td1.appendChild(document.createTextNode(array1));
+                // td2.appendChild(document.createTextNode("temp"));
+                // row.appendChild(td1);
+                // row.appendChild(td2);
+                // table.appendChild(row);
+                // counter++;
+                // document.body.appendChild(table);
+
+
+            }
+
+
+
+
+
+
+
+        }
+
+
+        function split(AR) {
+
+
+            for (let i = 0; i < AR.length; i++) {
+                arr2.push(AR[i].toUpperCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,""));
+            }
+
+
+        }
+
+        var counts=[];
+
+        function display(){
+
+
+
+            for (var i = 0; i <arr2.length ; i++) {
+                if (counts[arr2[i]]===undefined){
+                    counts[arr2[i]]=1;
+
+                } else {
+                    counts[arr2[i]]++;
+                }
+
+            }
+
+
+
+            arr2 = [...new Set(arr2)];
+            arr2.sort();
+
+
+            var table = document.getElementById("tab1");
+
+            counter = 0;
+
+            for (let i = 0; i <arr2.length ; i++) {
+                var row = document.createElement("tr");
+                var td1 = document.createElement("td");
+                var td2 = document.createElement("td");
+                td1.appendChild(document.createTextNode(arr2[i]));
+                td2.appendChild(document.createTextNode(counts[arr2[i]]));
+                row.appendChild(td1);
+                row.appendChild(td2);
+                table.appendChild(row);
+                counter++;
+            }
+
+            pre = document.getElementById("count");
+            pre.textContent = "Found "+counter+ " words";
+
+            document.body.appendChild(table);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+</head>
+<body>
+
+<h1>Welcome to word counter</h1>
+
+<p>Filename: <input id = "url" name="url" size=15 type="Text"/></p>
+<a href="javascript:openFile(document.getElementById('url').value)">
+    Open document</a>
+</br>
+<a href="javascript:upperCase(w.document.body)">To upper case</a>
+<br>
+<a href="javascript:lowerCase(w.document.body)">To lower case</a>
+
+
+</br>
+
+<a href="javascript:retrieveText()">Retrieve text</a><br/>
+
+<a href="javascript:displayArr()">Display array contents</a> <br>
+
+<a href="javascript:assoc3()">test array</a>
+
+
+
+
+<pre id="count"> &nbsp; </pre><br/>
+
+<div id="tablediv">
+
+    <table id="tab1">
+        <tr>
+            <th>Word</th>
+            <th>Occurences</th>
+
+        </tr>
+
+
+
+
+    </table>
+
+
+</div>
+
+
+
+
+
+
+
+</body>
+</html>
