@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+
+        function openFile(url) {
+            w = window.open();
+            w.location = url;
+        }
+
+
+        function upperCase(node) {
+            if (node.nodeType==Node.ELEMENT_NODE) {
+                for (var m = node.firstChild; m!=null; m = m.nextSibling)
+                    upperCase(m);
+            }
+            else if (node.nodeType==Node.TEXT_NODE) {
+                node.data = node.data.toUpperCase();
+            }
+        }
+
+
+        function lowerCase(node){
+
+            if(node.nodeType==Node.ELEMENT_NODE){
+                for (var m = node.firstChild; m!=null; m=m.nextSibling) {
+                    lowerCase(m)
+
+                }
+            } else if(node.nodeType==Node.TEXT_NODE){
+                node.data=node.data.toLowerCase();
+            }
+        }
+
+        var counter;
+        var pre;
+        function retrieveText() {
+            pre = document.getElementById("count");
+            counter = 0;
+            retrieve(w.document.body);
+            pre.textContent = "Found "+counter+ " text nodes";
+        }
+
+
+        function retrieve(doc){
+            if(doc.nodeType==Node.ELEMENT_NODE){
+                alert("element node");
+                for (var m = doc.firstChild; m!=null; m=m.nextSibling) {
+                    retrieve(m);
+
+                }
+            } else if(doc.nodeType==Node.TEXT_NODE){
+
+
+                var par= document.createElement("P");
+                par.appendChild(document.createTextNode(doc.data));
+
+                alert(doc.data.toString());
+
+                var pre2 = document.getElementsByTagName("body");
+                var pre1 = document.getElementById("count");
+
+
+                pre1.parentNode.insertBefore(par,pre1);
+
+
+
+
+
+
+
+            }
+
+
+
+        }
+
+
+
+    </script>
+
+
+
+
+
+</head>
+<body>
+<p>Filename: <input id = "url" name="url" size=15 type="Text"/></p>
+<a href="javascript:openFile(document.getElementById('url').value)">
+    Open document</a>
+</br>
+<a href="javascript:upperCase(w.document.body)">To upper case</a>
+<br>
+<a href="javascript:lowerCase(w.document.body)">To lower case</a>
+
+
+</br>
+
+<a href="javascript:retrieveText()">Retrieve text</a><br/>
+<pre id="count"> &nbsp; </pre><br/>
+
+
+
+
+
+
+</body>
+</html>
