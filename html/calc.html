@@ -29,6 +29,10 @@
 
 
         <script>
+
+
+            var defau =0;
+
             function pressed(but) {
 
 
@@ -50,6 +54,11 @@
             function calculate() {
 
 
+            }
+
+
+            function setDefault(){
+                document.getElementById("calc").value='0';
             }
 
 
@@ -101,7 +110,7 @@
                 <button onclick="pressed('0')">0</button>
             </td>
             <td>
-                <button>C</button>
+                <button onclick="setDefault()">C</button>
             </td>
         </tr>
         <tr>
