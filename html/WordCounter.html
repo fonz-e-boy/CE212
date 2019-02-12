@@ -15,29 +15,6 @@
         }
 
 
-        function upperCase(node) {
-            if (node.nodeType==Node.ELEMENT_NODE) {
-                for (var m = node.firstChild; m!=null; m = m.nextSibling)
-                    upperCase(m);
-            }
-            else if (node.nodeType==Node.TEXT_NODE) {
-                node.data = node.data.toUpperCase();
-            }
-        }
-
-
-        function lowerCase(node){
-
-            if(node.nodeType==Node.ELEMENT_NODE){
-                for (var m = node.firstChild; m!=null; m=m.nextSibling) {
-                    lowerCase(m)
-
-                }
-            } else if(node.nodeType==Node.TEXT_NODE){
-                node.data=node.data.toLowerCase();
-            }
-        }
-
         var counter;
         var pre;
 
@@ -62,19 +39,6 @@
             } else if (doc.nodeType == Node.TEXT_NODE) {
 
 
-                // doc.data=doc.data.split(" ");
-                // var table = document.getElementById("tab1");
-                // var row = document.createElement("tr");
-                // var td1 = document.createElement("td");
-                // var td2 = document.createElement("td");
-                // td1.appendChild(document.createTextNode(doc.data.toUpperCase()));
-                // td2.appendChild(document.createTextNode("temp"));
-                // row.appendChild(td1);
-                // row.appendChild(td2);
-                // table.appendChild(row);
-                // counter++;
-                // document.body.appendChild(table);
-
                 var temparray=doc.data.split(" ");
 
                array1=temparray.filter(function(str){
@@ -86,25 +50,7 @@
 
 
 
-
-                // var table = document.getElementById("tab1");
-                // var row = document.createElement("tr");
-                // var td1 = document.createElement("td");
-                // var td2 = document.createElement("td");
-                // td1.appendChild(document.createTextNode(array1));
-                // td2.appendChild(document.createTextNode("temp"));
-                // row.appendChild(td1);
-                // row.appendChild(td2);
-                // table.appendChild(row);
-                // counter++;
-                // document.body.appendChild(table);
-
-
             }
-
-
-
-
 
 
 
