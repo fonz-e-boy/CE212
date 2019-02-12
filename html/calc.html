@@ -84,11 +84,10 @@
             }
 
 
-            function plusPressed(){
+            function plusPressed() {
 
-                if (evalArray.length===2){
-                    calculate()
-                } else {
+
+                if (evalArray[evalArray.length-1]!=='/' &&evalArray[evalArray.length-1]!=='+'&&evalArray[evalArray.length-1]!=='*'&&evalArray[evalArray.length-1]!=='-') {
 
                     display = document.getElementById("calc").value;
 
@@ -98,35 +97,45 @@
                 }
 
 
-
             }
 
             function minusPressed(){
-                display=document.getElementById("calc").value;
 
-                evalArray.push(display);
-                evalArray.push('-');
-                waiting=false;
+
+                if (evalArray[evalArray.length-1]!=='/' &&evalArray[evalArray.length-1]!=='+'&&evalArray[evalArray.length-1]!=='*'&&evalArray[evalArray.length-1]!=='-') {
+
+                    display = document.getElementById("calc").value;
+
+                    evalArray.push(display);
+                    evalArray.push('-');
+                    waiting = false;
+                }
 
             }
 
 
             function dividePressed(){
-                display=document.getElementById("calc").value;
+                if (evalArray[evalArray.length-1]!=='/' &&evalArray[evalArray.length-1]!=='+'&&evalArray[evalArray.length-1]!=='*'&&evalArray[evalArray.length-1]!=='-') {
 
-                evalArray.push(display);
-                evalArray.push('/');
-                waiting=false;
+                    display = document.getElementById("calc").value;
+
+                    evalArray.push(display);
+                    evalArray.push('/');
+                    waiting = false;
+                }
 
             }
 
 
             function multPressed(){
-                display=document.getElementById("calc").value;
+                if (evalArray[evalArray.length-1]!=='/' &&evalArray[evalArray.length-1]!=='+'&&evalArray[evalArray.length-1]!=='*'&&evalArray[evalArray.length-1]!=='-') {
 
-                evalArray.push(display);
-                evalArray.push('*');
-                waiting = false;
+                    display = document.getElementById("calc").value;
+
+                    evalArray.push(display);
+                    evalArray.push('*');
+                    waiting = false;
+                }
             }
 
 

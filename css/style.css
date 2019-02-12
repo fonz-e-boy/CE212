@@ -16,6 +16,9 @@ tr.even{
 
 }
 
+th{
+    background: aqua;
+}
 
 tr.odd{
     background: #fca3d0;
