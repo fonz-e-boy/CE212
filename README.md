@@ -1,10 +1,10 @@
-## CE212
+# CE212 (Web Application Programming)
 ## Web Application Programming Assignment 1
 
 ### Excercise 1
 
 As part of my Web Development module, this assignment comprises of three excercises. Exercise 1 (named Converter.html), allows the user
-to input a range of values and proceses a conversion table from Celcius to Farenheit (or vice versa.)
+to input a range of values and proceses a conversion table from Celcius to Farenheit (or vice versa)
 
 ### Exercise 2
 
